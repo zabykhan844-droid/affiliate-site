@@ -3,232 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Zaby Deals | Best Amazon Picks</title>
-
+<title>Zaby Deals</title>
 <script src="https://cdn.tailwindcss.com"></script>
-
 </head>
 
 <body class="bg-gray-100 font-sans">
 
-
-<!-- Header -->
 <header class="bg-black text-white p-4 text-center text-xl font-bold">
-🔥 100rs Deals – Best Amazon Offers
+🔥 Zaby Deals – Best Amazon Offers
 </header>
 
-<div class="bg-black text-yellow-400 text-center py-2 text-sm font-bold">
-⚡ Limited Time Deals — Hurry Up!
-</div>
-
-
-<!-- Hero -->
 <section class="bg-gradient-to-r from-orange-400 to-pink-500 text-center p-10 text-white">
-
-<h1 class="text-3xl font-bold mb-3">
-🔥 Best Amazon Deals Under ₹100
-</h1>
-
-<p class="text-lg">
-Daily Updated | Trusted Picks | Save Money 💰
-</p>
-
+<h1 class="text-3xl font-bold mb-3">🔥 Best Amazon Deals</h1>
+<p class="text-lg">Daily Updated | Save Money 💰</p>
 </section>
 
-
-<section class="bg-white text-center py-3 text-sm font-semibold text-gray-700">
-✅ Amazon Verified | 🔒 Secure Links | 💯 Best Price Guarantee
-</section>
-
-
-<!-- Timer -->
 <section class="bg-red-100 text-center py-3 font-bold text-red-600">
 ⏰ Offer Ends In: <span id="timer">10:00</span>
 </section>
 
-
-<!-- Slider -->
 <section class="max-w-6xl mx-auto mt-6 px-4">
-
-<div class="relative overflow-hidden rounded-xl shadow-lg">
-
-<img id="sliderImg"
-src="https://m.media-amazon.com/images/I/61A2OYtJ3OL._SL1500_.jpg"
-class="w-full h-56 object-contain bg-white p-4">
-
-</div>
-
+<img id="sliderImg" class="w-full h-56 object-contain bg-white rounded-xl shadow-lg p-4">
 </section>
 
-
-<!-- Search + Filter -->
 <section class="max-w-6xl mx-auto mt-6 px-4">
-
 <div class="flex flex-col md:flex-row gap-4">
-
-<input id="searchInput"
-type="text"
-placeholder="Search product..."
+<input id="searchInput" type="text" placeholder="Search product..."
 class="flex-1 p-3 border rounded-lg outline-none">
 
-
-<select id="categoryFilter"
-class="p-3 border rounded-lg">
-
+<select id="categoryFilter" class="p-3 border rounded-lg">
 <option value="all">All Categories</option>
 <option value="kitchen">Kitchen</option>
-<option value="home">Home</option>
+<option value="beauty">Beauty</option>
 <option value="mobile">Mobile</option>
-
 </select>
-
 </div>
-
 </section>
 
+<section class="max-w-7xl mx-auto p-6 space-y-12" id="allSections"></section>
 
-<!-- Products -->
-<section class="max-w-7xl mx-auto p-6">
-
-<div id="productBox"
-class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-</div>
-
-</section>
-
-
-<!-- Footer -->
 <footer class="bg-black text-white text-center p-4 mt-6 text-sm">
-
 As an Amazon Associate, I earn from qualifying purchases.
-
-<br>© 2026 Zaby Deals
-
 </footer>
 
-
-<!-- Floating Buttons -->
-<div class="fixed bottom-5 right-5 flex flex-col gap-3 z-50">
-
-<a href="https://wa.me/91XXXXXXXXXX"
-target="_blank"
-class="bg-green-500 text-white px-4 py-2 rounded-full shadow-lg text-sm font-bold">
-💬 WhatsApp
-</a>
-
-<a href="https://t.me/yourchannel"
-target="_blank"
-class="bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg text-sm font-bold">
-📢 Telegram
-</a>
-
-</div>
-
-
-<!-- Mobile CTA -->
-<div class="fixed bottom-0 left-0 w-full bg-orange-500 text-white text-center py-3 font-bold md:hidden z-40">
-🔥 Tap Product & Buy Now — Limited Stock!
-</div>
-
-
-
-<!-- SCRIPT -->
 <script>
-
 
 /* ================= PRODUCTS ================= */
 
 const products = [
 
 {
-name:"Spark Gas Lighter",
-desc:"Long lasting kitchen gas lighter",
+name:"Gas Lighter",
+price:89,
+category:"kitchen",
 img:"https://m.media-amazon.com/images/I/61A2OYtJ3OL._AC_UL480_FMwebp_QL65_.jpg",
 link:"https://amzn.to/46xJNuf?tag=zabykh-21",
-category:"kitchen",
 trending:true
 },
 
 {
-name:"Glass Wiper",
-desc:"Window & bathroom cleaning wiper",
-img:"https://m.media-amazon.com/images/I/515kIic-J3L._AC_UL480_FMwebp_QL65_.jpg",
-link:"https://amzn.to/4aVSn8s?tag=zabykh-21",
-category:"home",
-trending:true
-},
-
-{
-name:"Mobile Stand",
-desc:"Adjustable mobile holder stand",
-img:"https://m.media-amazon.com/images/I/51u2MqPaQwL._AC_UL480_FMwebp_QL65_.jpg",
-link:"https://amzn.to/4aJhqdJ?tag=zabykh-21",
-category:"mobile",
-trending:false
-},
-
-{
-name:"Buddha Monk Set",
-desc:"Decorative figurine set",
+name:"Face Cream",
+price:99,
+category:"beauty",
 img:"https://m.media-amazon.com/images/I/51wE19mi-ML.jpg",
 link:"https://amzn.to/4aG7MZk?tag=zabykh-21",
-category:"home",
 trending:true
 },
 
 {
 name:"Oil Dispenser",
-desc:"Oil bottle with silicone brush",
+price:149,
+category:"kitchen",
 img:"https://m.media-amazon.com/images/I/514bHA5sk4L._SL1500_.jpg",
 link:"https://amzn.to/3OlkNA0?tag=zabykh-21",
-category:"kitchen",
 trending:false
 },
 
 {
-name:"Rotating Organizer",
-desc:"360° spice organizer tray",
-img:"https://m.media-amazon.com/images/I/71SJdajTFpL._SL1500_.jpg",
-link:"https://amzn.to/4qYOUef?tag=zabykh-21",
-category:"kitchen",
-trending:true
-},
-
-{
-name:"Soap Dispenser",
-desc:"Soap pump with sponge holder",
-img:"https://m.media-amazon.com/images/I/51DS8h5RqhL._SX679_.jpg",
-link:"https://amzn.to/3MRn714?tag=zabykh-21",
-category:"kitchen",
-trending:false
-},
-
-{
-name:"Kitchen Mat",
-desc:"Anti-slip waterproof mat",
-img:"https://m.media-amazon.com/images/I/61G+0+Z+a1L._SL1500_.jpg",
-link:"https://amzn.to/46YAvHF?tag=zabykh-21",
-category:"home",
+name:"Mobile Stand",
+price:120,
+category:"mobile",
+img:"https://m.media-amazon.com/images/I/51u2MqPaQwL._AC_UL480_FMwebp_QL65_.jpg",
+link:"https://amzn.to/4aJhqdJ?tag=zabykh-21",
 trending:true
 }
 
 ];
 
 
-/* ================= RENDER ================= */
+/* ================= CARD ================= */
 
-const box = document.getElementById("productBox");
-
-
-function showProducts(list){
-
-box.innerHTML = "";
-
-list.forEach(p=>{
-
-box.innerHTML += `
-
+function card(p){
+return `
 <div class="relative bg-white rounded-xl shadow-md p-4 hover:shadow-xl transition border">
 
 ${p.trending ? `
@@ -236,35 +102,73 @@ ${p.trending ? `
 🔥 Trending
 </div>` : ""}
 
-<img src="${p.img}"
-class="h-44 mx-auto object-contain mb-3">
+<img src="${p.img}" class="h-44 mx-auto object-contain mb-3">
 
-<h2 class="font-semibold text-base mb-1">
-${p.name}
-</h2>
+<h2 class="font-semibold text-base mb-1">${p.name}</h2>
 
-<p class="text-xs text-gray-600 mb-3">
-${p.desc}
-</p>
+<p class="text-sm text-gray-600 mb-2">₹${p.price}</p>
 
-<a href="${p.link}"
-target="_blank"
-class="block bg-gradient-to-r from-orange-400 to-red-500 text-white text-center py-2 rounded-full font-semibold text-sm hover:opacity-90">
+<a href="${p.link}" target="_blank"
+class="block bg-gradient-to-r from-orange-400 to-red-500 text-white text-center py-2 rounded-full font-semibold text-sm">
 
 🛒 Buy on Amazon
 
 </a>
 
 </div>
-
 `;
+}
+
+
+/* ================= RENDER SECTIONS ================= */
+
+function renderSections(list){
+
+const box = document.getElementById("allSections");
+box.innerHTML = "";
+
+
+/* UNDER 100 */
+
+const under100 = list.filter(p=>p.price<=100);
+
+if(under100.length){
+box.innerHTML += `
+<h2 class="text-2xl font-bold border-l-4 border-red-500 pl-3">
+🔥 Under ₹100 Deals
+</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="sec-budget"></div>
+`;
+under100.forEach(p=>{
+document.getElementById("sec-budget").innerHTML += card(p);
+});
+}
+
+
+/* CATEGORY SECTIONS */
+
+["kitchen","beauty","mobile"].forEach(cat=>{
+
+const items = list.filter(p=>p.category===cat);
+
+if(items.length){
+box.innerHTML += `
+<h2 class="text-2xl font-bold border-l-4 border-orange-500 pl-3">
+${cat.toUpperCase()}
+</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="sec-${cat}"></div>
+`;
+
+items.forEach(p=>{
+document.getElementById(`sec-${cat}`).innerHTML += card(p);
+});
+}
 
 });
 
 }
 
-
-showProducts(products);
+renderSections(products);
 
 
 /* ================= SEARCH ================= */
@@ -272,13 +176,11 @@ showProducts(products);
 document.getElementById("searchInput")
 .addEventListener("input",function(){
 
-const val = this.value.toLowerCase();
-
+const v = this.value.toLowerCase();
 const filtered = products.filter(p=>
-p.name.toLowerCase().includes(val)
+p.name.toLowerCase().includes(v)
 );
-
-showProducts(filtered);
+renderSections(filtered);
 
 });
 
@@ -288,19 +190,14 @@ showProducts(filtered);
 document.getElementById("categoryFilter")
 .addEventListener("change",function(){
 
-const cat = this.value;
-
-if(cat==="all"){
-showProducts(products);
+if(this.value==="all"){
+renderSections(products);
 }
 else{
-
 const filtered = products.filter(p=>
-p.category===cat
+p.category===this.value
 );
-
-showProducts(filtered);
-
+renderSections(filtered);
 }
 
 });
@@ -308,45 +205,42 @@ showProducts(filtered);
 
 /* ================= SLIDER ================= */
 
-const sliderImages = products.map(p=>p.img);
-
-let i = 0;
+const slides = products.map(p=>p.img);
+let i=0;
+document.getElementById("sliderImg").src = slides[0];
 
 setInterval(()=>{
-
 i++;
-
-if(i>=sliderImages.length){
-i=0;
-}
-
-document.getElementById("sliderImg").src =
-sliderImages[i];
-
+if(i>=slides.length) i=0;
+document.getElementById("sliderImg").src = slides[i];
 },3000);
 
 
 /* ================= TIMER ================= */
 
 let time = 600;
-
 setInterval(()=>{
-
-let min = Math.floor(time/60);
-let sec = time % 60;
-
-if(sec<10) sec="0"+sec;
-
-document.getElementById("timer").innerText =
-min+":"+sec;
-
+let m = Math.floor(time/60);
+let s = time%60;
+if(s<10) s="0"+s;
+document.getElementById("timer").innerText = m+":"+s;
 if(time>0) time--;
-
 },1000);
-
 
 </script>
 
-
 </body>
 </html>
+<script>
+const sheetURL = "PASTE_YOUR_SHEET_API_LINK_HERE";
+
+fetch(sheetURL)
+.then(res=>res.json())
+.then(data=>{
+
+const products = data.slice(-5); // last 5 products
+
+renderSections(products);
+
+});
+</script>
