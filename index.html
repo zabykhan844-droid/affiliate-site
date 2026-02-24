@@ -16,12 +16,22 @@
 <header class="bg-black text-white p-4 text-center text-xl font-bold">
 🔥 100rs Deals – Best Amazon Offers
 </header>
+  
+<div class="bg-black text-yellow-400 text-center py-2 text-sm font-bold">
+  ⚡ Limited Time Deals — Hurry Up!
+</div>
 
 
 <!-- Hero -->
-<section class="bg-orange-400 text-center p-6 text-black">
-<h1 class="text-2xl font-bold mb-2">Top Products You’ll Love ❤️</h1>
-<p>Handpicked Amazon Deals For You</p>
+<section class="bg-gradient-to-r from-orange-400 to-pink-500 text-center p-10 text-white">
+  <h1 class="text-3xl font-bold mb-3">🔥 Best Amazon Deals Under ₹100</h1>
+  <p class="text-lg">Daily Updated | Trusted Picks | Save Money 💰</p>
+</section>
+  
+<section class="bg-white text-center py-4 text-sm font-semibold text-gray-700">
+  ✅ Amazon Verified &nbsp; | &nbsp;
+  🔒 Secure Links &nbsp; | &nbsp;
+  💯 Best Price Guarantee
 </section>
 
 
@@ -98,8 +108,7 @@ products.forEach(p => {
 
 box.innerHTML += `
 
-<div class="bg-white rounded-lg shadow p-4 hover:scale-105 transition">
-
+<div class="bg-white rounded-xl shadow-lg p-5 hover:scale-105 hover:shadow-2xl transition-all duration-300 border">
 <img src="${p.img}" class="h-48 mx-auto object-contain mb-3">
 
 <h2 class="font-bold text-lg">${p.name}</h2>
@@ -107,7 +116,7 @@ box.innerHTML += `
 <p class="text-sm text-gray-600 mb-3">${p.desc}</p>
 
 <a href="${p.link}" target="_blank"
-class="block bg-orange-400 text-black text-center py-2 rounded font-bold">
+class="block bg-gradient-to-r from-orange-400 to-red-500 text-white text-center py-2 rounded-full font-bold hover:opacity-90"
 
 Buy On Amazon 🛒
 
