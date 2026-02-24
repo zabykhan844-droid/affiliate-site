@@ -12,124 +12,82 @@
 
 <body class="bg-gray-100 font-sans">
 
+
 <!-- Header -->
 <header class="bg-black text-white p-4 text-center text-xl font-bold">
 🔥 100rs Deals – Best Amazon Offers
 </header>
-  
+
 <div class="bg-black text-yellow-400 text-center py-2 text-sm font-bold">
-  ⚡ Limited Time Deals — Hurry Up!
+⚡ Limited Time Deals — Hurry Up!
 </div>
 
 
 <!-- Hero -->
 <section class="bg-gradient-to-r from-orange-400 to-pink-500 text-center p-10 text-white">
-  <h1 class="text-3xl font-bold mb-3">🔥 Best Amazon Deals Under ₹100</h1>
-  <p class="text-lg">Daily Updated | Trusted Picks | Save Money 💰</p>
+
+<h1 class="text-3xl font-bold mb-3">
+🔥 Best Amazon Deals Under ₹100
+</h1>
+
+<p class="text-lg">
+Daily Updated | Trusted Picks | Save Money 💰
+</p>
+
 </section>
-  
-<section class="bg-white text-center py-4 text-sm font-semibold text-gray-700">
-  ✅ Amazon Verified &nbsp; | &nbsp;
-  🔒 Secure Links &nbsp; | &nbsp;
-  💯 Best Price Guarantee
+
+
+<section class="bg-white text-center py-3 text-sm font-semibold text-gray-700">
+✅ Amazon Verified | 🔒 Secure Links | 💯 Best Price Guarantee
+</section>
+
+
+<!-- Slider -->
+<section class="max-w-6xl mx-auto mt-6 px-4">
+
+<div class="relative overflow-hidden rounded-xl shadow-lg">
+
+<img id="sliderImg"
+src="https://m.media-amazon.com/images/I/61A2OYtJ3OL._SL1500_.jpg"
+class="w-full h-56 object-contain bg-white p-4">
+
+</div>
+
+</section>
+
+
+<!-- Search + Filter -->
+<section class="max-w-6xl mx-auto mt-6 px-4">
+
+<div class="flex flex-col md:flex-row gap-4">
+
+<input id="searchInput"
+type="text"
+placeholder="Search product..."
+class="flex-1 p-3 border rounded-lg outline-none">
+
+
+<select id="categoryFilter"
+class="p-3 border rounded-lg">
+
+<option value="all">All Categories</option>
+<option value="kitchen">Kitchen</option>
+<option value="home">Home</option>
+<option value="mobile">Mobile</option>
+
+</select>
+
+</div>
+
 </section>
 
 
 <!-- Products -->
-<section class="max-w-6xl mx-auto p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+<section class="max-w-7xl mx-auto p-6">
 
-
-<script>
-
-const products = [
-
-{
-name:"Spark Gas Lighter",
-desc:"Ganesh Spark Gas Lighter for Kitchen Use Restaurants Metal Gas Stove Lighter Regular Size Easy Grip Long Lasting, Rust Proof",
-img:"https://m.media-amazon.com/images/I/61A2OYtJ3OL._AC_UL480_FMwebp_QL65_.jpg",
-link:"https://amzn.to/46xJNuf?tag=zabykh-21"
-},
-
-{
-name:"Pivalo Kitchen Platform & Glass Squeegee Wiper",
-desc:"All-Purpose Cleaning Windows Car Windshield Bathroom Mirrors Table Cleaner (Set of 2, Random Colours)",
-img:"https://m.media-amazon.com/images/I/515kIic-J3L._AC_UL480_FMwebp_QL65_.jpg",
-link:"https://amzn.to/4aVSn8s?tag=zabykh-21"
-},
-
-{
-name:"Portronics MODESK Universal Mobile Holder Stand",
-desc:"18W Fast Charging Dual Output",
-img:"https://m.media-amazon.com/images/I/51u2MqPaQwL._AC_UL480_FMwebp_QL65_.jpg",
-link:"https://amzn.to/4aJhqdJ?tag=zabykh-21"
-},
-
-{
-name:"MF® Buddha Monk Figurines Set 4Pc",
-desc:"Multicolour Polyresin Decorative Statues for Home Decor, Indoor/Outdoor Garden, Car Dashboard, Wall Shelf, Office Table, Spiritual Yard Art & Unique Gift Items",
-img:"https://m.media-amazon.com/images/I/51wE19mi-ML.jpg",
-link:"https://amzn.to/4aG7MZk?tag=zabykh-21"
-},
-
-{
-name:"HomeWiz BPA-Free Plastic Oil Dispenser Bottle",
-desc:"Perfect for Air-Fryer Low-Oil Cooking, Baking, BBQ & Marinating | Easy-Pour Drip-Free Kitchen Oil Container–350ml",
-img:"https://m.media-amazon.com/images/I/514bHA5sk4L._SL1500_.jpg",
-link:"https://amzn.to/3OlkNA0?tag=zabykh-21"
-},
-  
-{
-name:"HomeWiz Multi-Purpose ",
-desc:"HomeWiz Multi-Purpose 360° Rotating Organizer Tray|Kitchen Accessories Items|Kitchen Organizer Rack|Kitchen Tools|Easy - Access Turntable for Spices,Storage & More | Black",
-img:"https://m.media-amazon.com/images/I/71SJdajTFpL._SL1500_.jpg",
-link:"https://amzn.to/4qYOUef?tag=zabykh-21"
-},
-
-{
-name:"Leawall 3-in-1 Soap Dispenser with Sponge Holder",
-desc:"Leawall 3-in-1 Soap Dispenser with Sponge Holder – Bathroom Liquid Soap Pump for Kitchen Sink handwash Dispenser Bottle soap Dispenser for wash Basin Kitchen Accessories Items for Home (Multicolor)",
-img:"https://m.media-amazon.com/images/I/51DS8h5RqhL._SX679_.jpg",
-link:"https://amzn.to/3MRn714?tag=zabykh-21"
-},
-
-{
-name:"CANWAY Rectangular Kitchen Mat Set of 2 (40×60 & 120×40 cm)",
-desc:"CANWAY Rectangular Kitchen Mat Set of 2 (40×60 & 120×40 cm) – Water Absorbing, Anti-Slip, Waterproof, Washable Floor Mats for Home, Cooking Area & Sink Runner, Blue",
-img:"https://m.media-amazon.com/images/I/61G+0+Z+a1L._SL1500_.jpg",
-link:"https://amzn.to/46YAvHF?tag=zabykh-21"
-}
-  
-];
-
-
-const box = document.currentScript.parentElement;
-
-products.forEach(p => {
-
-box.innerHTML += `
-
-<div class="bg-white rounded-xl shadow-lg p-5 hover:scale-105 hover:shadow-2xl transition-all duration-300 border">
-<img src="${p.img}" class="h-48 mx-auto object-contain mb-3">
-
-<h2 class="font-bold text-lg">${p.name}</h2>
-
-<p class="text-sm text-gray-600 mb-3">${p.desc}</p>
-
-<a href="${p.link}" target="_blank"
-class="block bg-gradient-to-r from-orange-400 to-red-500 text-white text-center py-2 rounded-full font-bold hover:opacity-90"
-
-Buy On Amazon 🛒
-
-</a>
-
+<div id="productBox"
+class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 </div>
-
-`;
-
-});
-
-</script>
-
 
 </section>
 
@@ -142,6 +100,191 @@ As an Amazon Associate, I earn from qualifying purchases.
 <br>© 2026 Zaby Deals
 
 </footer>
+
+
+
+<!-- SCRIPT -->
+<script>
+
+
+/* ================= PRODUCTS ================= */
+
+const products = [
+
+{
+name:"Spark Gas Lighter",
+desc:"Long lasting kitchen gas lighter",
+img:"https://m.media-amazon.com/images/I/61A2OYtJ3OL._AC_UL480_FMwebp_QL65_.jpg",
+link:"https://amzn.to/46xJNuf?tag=zabykh-21",
+category:"kitchen"
+},
+
+{
+name:"Glass Wiper",
+desc:"Window & bathroom cleaning wiper",
+img:"https://m.media-amazon.com/images/I/515kIic-J3L._AC_UL480_FMwebp_QL65_.jpg",
+link:"https://amzn.to/4aVSn8s?tag=zabykh-21",
+category:"home"
+},
+
+{
+name:"Mobile Stand",
+desc:"Adjustable mobile holder stand",
+img:"https://m.media-amazon.com/images/I/51u2MqPaQwL._AC_UL480_FMwebp_QL65_.jpg",
+link:"https://amzn.to/4aJhqdJ?tag=zabykh-21",
+category:"mobile"
+},
+
+{
+name:"Buddha Monk Set",
+desc:"Decorative figurine set",
+img:"https://m.media-amazon.com/images/I/51wE19mi-ML.jpg",
+link:"https://amzn.to/4aG7MZk?tag=zabykh-21",
+category:"home"
+},
+
+{
+name:"Oil Dispenser",
+desc:"Oil bottle with silicone brush",
+img:"https://m.media-amazon.com/images/I/514bHA5sk4L._SL1500_.jpg",
+link:"https://amzn.to/3OlkNA0?tag=zabykh-21",
+category:"kitchen"
+},
+
+{
+name:"Rotating Organizer",
+desc:"360° spice organizer tray",
+img:"https://m.media-amazon.com/images/I/71SJdajTFpL._SL1500_.jpg",
+link:"https://amzn.to/4qYOUef?tag=zabykh-21",
+category:"kitchen"
+},
+
+{
+name:"Soap Dispenser",
+desc:"Soap pump with sponge holder",
+img:"https://m.media-amazon.com/images/I/51DS8h5RqhL._SX679_.jpg",
+link:"https://amzn.to/3MRn714?tag=zabykh-21",
+category:"kitchen"
+},
+
+{
+name:"Kitchen Mat",
+desc:"Anti-slip waterproof mat",
+img:"https://m.media-amazon.com/images/I/61G+0+Z+a1L._SL1500_.jpg",
+link:"https://amzn.to/46YAvHF?tag=zabykh-21",
+category:"home"
+}
+
+];
+
+
+/* ================= RENDER ================= */
+
+const box = document.getElementById("productBox");
+
+
+function showProducts(list){
+
+box.innerHTML = "";
+
+list.forEach(p=>{
+
+box.innerHTML += `
+
+<div class="bg-white rounded-xl shadow-md p-4 hover:shadow-xl transition border">
+
+<img src="${p.img}"
+class="h-44 mx-auto object-contain mb-3">
+
+<h2 class="font-semibold text-base mb-1">
+${p.name}
+</h2>
+
+<p class="text-xs text-gray-600 mb-3">
+${p.desc}
+</p>
+
+<a href="${p.link}"
+target="_blank"
+class="block bg-gradient-to-r from-orange-400 to-red-500 text-white text-center py-2 rounded-full font-semibold text-sm hover:opacity-90">
+
+🛒 Buy on Amazon
+
+</a>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+showProducts(products);
+
+
+/* ================= SEARCH ================= */
+
+document.getElementById("searchInput")
+.addEventListener("input",function(){
+
+const val = this.value.toLowerCase();
+
+const filtered = products.filter(p=>
+p.name.toLowerCase().includes(val)
+);
+
+showProducts(filtered);
+
+});
+
+
+/* ================= FILTER ================= */
+
+document.getElementById("categoryFilter")
+.addEventListener("change",function(){
+
+const cat = this.value;
+
+if(cat==="all"){
+showProducts(products);
+}
+else{
+
+const filtered = products.filter(p=>
+p.category===cat
+);
+
+showProducts(filtered);
+
+}
+
+});
+
+
+/* ================= SLIDER ================= */
+
+const sliderImages = products.map(p=>p.img);
+
+let i = 0;
+
+setInterval(()=>{
+
+i++;
+
+if(i>=sliderImages.length){
+i=0;
+}
+
+document.getElementById("sliderImg").src =
+sliderImages[i];
+
+},3000);
+
+
+</script>
+
 
 </body>
 </html>
