@@ -227,20 +227,26 @@ document.getElementById("timer").innerText = m+":"+s;
 if(time>0) time--;
 },1000);
 
-</script>
-
-</body>
-</html>
 <script>
-const sheetURL = "https://opensheet.elk.sh/1HZ79NaXAvP_V-5qBMFMIfrQmziXZ2ns-xxVraPKP-XM/Sheet1";
+const sheetURL = "https://opensheet.elk.sh/1HZ79NaXAvP_V-5qBMFMIfrQmziXZ2ns-xxVraPKP-XM/Sheet1"; // apna link daal
 
 fetch(sheetURL)
-.then(res=>res.json())
-.then(data=>{
+.then(res => res.json())
+.then(data => {
 
-const products = data.slice(-5); // last 5 products
+  const products = data.map(p => ({
+    name: p.Name,
+    price: Number(p.Price),
+    category: p.Category,
+    img: p.Image,
+    link: p.Link,
+    trending: p.Trending === "yes"
+  }));
 
-renderSections(products);
+  renderSections(products);
 
+})
+.catch(err=>{
+  console.log("Sheet Error:", err);
 });
 </script>
