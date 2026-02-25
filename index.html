@@ -9,92 +9,68 @@
 
 <body class="bg-gray-100 font-sans">
 
+<!-- HEADER -->
 <header class="bg-black text-white p-4 text-center text-xl font-bold">
 🔥 Zaby Deals – Best Amazon Offers
 </header>
 
+<!-- HERO -->
 <section class="bg-gradient-to-r from-orange-400 to-pink-500 text-center p-10 text-white">
 <h1 class="text-3xl font-bold mb-3">🔥 Best Amazon Deals</h1>
 <p class="text-lg">Daily Updated | Save Money 💰</p>
 </section>
 
+<!-- TIMER -->
 <section class="bg-red-100 text-center py-3 font-bold text-red-600">
 ⏰ Offer Ends In: <span id="timer">10:00</span>
 </section>
 
+<!-- SLIDER -->
 <section class="max-w-6xl mx-auto mt-6 px-4">
-<img id="sliderImg" class="w-full h-56 object-contain bg-white rounded-xl shadow-lg p-4">
+<img id="sliderImg"
+class="w-full h-56 object-contain bg-white rounded-xl shadow-lg p-4">
 </section>
 
+<!-- SEARCH -->
 <section class="max-w-6xl mx-auto mt-6 px-4">
 <div class="flex flex-col md:flex-row gap-4">
-<input id="searchInput" type="text" placeholder="Search product..."
+
+<input id="searchInput"
+type="text"
+placeholder="Search product..."
 class="flex-1 p-3 border rounded-lg outline-none">
 
-<select id="categoryFilter" class="p-3 border rounded-lg">
+<select id="categoryFilter"
+class="p-3 border rounded-lg">
+
 <option value="all">All Categories</option>
 <option value="kitchen">Kitchen</option>
 <option value="beauty">Beauty</option>
 <option value="mobile">Mobile</option>
+
 </select>
+
 </div>
 </section>
 
+<!-- PRODUCTS -->
 <section class="max-w-7xl mx-auto p-6 space-y-12" id="allSections"></section>
 
+<!-- FOOTER -->
 <footer class="bg-black text-white text-center p-4 mt-6 text-sm">
 As an Amazon Associate, I earn from qualifying purchases.
 </footer>
 
+
+<!-- SCRIPT -->
 <script>
-
-/* ================= PRODUCTS ================= */
-
-const products = [
-
-{
-name:"Gas Lighter",
-price:89,
-category:"kitchen",
-img:"https://m.media-amazon.com/images/I/61A2OYtJ3OL._AC_UL480_FMwebp_QL65_.jpg",
-link:"https://amzn.to/46xJNuf?tag=zabykh-21",
-trending:true
-},
-
-{
-name:"Face Cream",
-price:99,
-category:"beauty",
-img:"https://m.media-amazon.com/images/I/51wE19mi-ML.jpg",
-link:"https://amzn.to/4aG7MZk?tag=zabykh-21",
-trending:true
-},
-
-{
-name:"Oil Dispenser",
-price:149,
-category:"kitchen",
-img:"https://m.media-amazon.com/images/I/514bHA5sk4L._SL1500_.jpg",
-link:"https://amzn.to/3OlkNA0?tag=zabykh-21",
-trending:false
-},
-
-{
-name:"Mobile Stand",
-price:120,
-category:"mobile",
-img:"https://m.media-amazon.com/images/I/51u2MqPaQwL._AC_UL480_FMwebp_QL65_.jpg",
-link:"https://amzn.to/4aJhqdJ?tag=zabykh-21",
-trending:true
-}
-
-];
-
 
 /* ================= CARD ================= */
 
 function card(p){
+
 return `
+
 <div class="relative bg-white rounded-xl shadow-md p-4 hover:shadow-xl transition border">
 
 ${p.trending ? `
@@ -116,15 +92,18 @@ class="block bg-gradient-to-r from-orange-400 to-red-500 text-white text-center 
 </a>
 
 </div>
+
 `;
+
 }
 
 
-/* ================= RENDER SECTIONS ================= */
+/* ================= RENDER ================= */
 
 function renderSections(list){
 
 const box = document.getElementById("allSections");
+
 box.innerHTML = "";
 
 
@@ -133,42 +112,78 @@ box.innerHTML = "";
 const under100 = list.filter(p=>p.price<=100);
 
 if(under100.length){
+
 box.innerHTML += `
 <h2 class="text-2xl font-bold border-l-4 border-red-500 pl-3">
 🔥 Under ₹100 Deals
 </h2>
+
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="sec-budget"></div>
 `;
+
 under100.forEach(p=>{
 document.getElementById("sec-budget").innerHTML += card(p);
 });
+
 }
 
 
-/* CATEGORY SECTIONS */
+/* CATEGORIES */
 
 ["kitchen","beauty","mobile"].forEach(cat=>{
 
 const items = list.filter(p=>p.category===cat);
 
 if(items.length){
+
 box.innerHTML += `
 <h2 class="text-2xl font-bold border-l-4 border-orange-500 pl-3">
 ${cat.toUpperCase()}
 </h2>
+
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="sec-${cat}"></div>
 `;
 
 items.forEach(p=>{
 document.getElementById(`sec-${cat}`).innerHTML += card(p);
 });
+
 }
 
 });
 
 }
 
+
+/* ================= GOOGLE SHEET LOAD ================= */
+
+const sheetURL =
+"https://opensheet.elk.sh/1HZ79NaXAvP_V-5qBMFMIfrQmziXZ2ns-xxVraPKP-XM/Sheet1";
+
+let products = [];
+
+fetch(sheetURL)
+.then(res => res.json())
+.then(data => {
+
+products = data.map(p => ({
+
+name: p.Name,
+price: Number(p.Price),
+category: p.Category?.toLowerCase(),
+img: p.Image,
+link: p.Link,
+trending: p.Trending === "yes"
+
+}));
+
 renderSections(products);
+startSlider();
+
+})
+.catch(err=>{
+console.log("Sheet Error:", err);
+});
 
 
 /* ================= SEARCH ================= */
@@ -177,9 +192,11 @@ document.getElementById("searchInput")
 .addEventListener("input",function(){
 
 const v = this.value.toLowerCase();
+
 const filtered = products.filter(p=>
 p.name.toLowerCase().includes(v)
 );
+
 renderSections(filtered);
 
 });
@@ -194,10 +211,13 @@ if(this.value==="all"){
 renderSections(products);
 }
 else{
+
 const filtered = products.filter(p=>
 p.category===this.value
 );
+
 renderSections(filtered);
+
 }
 
 });
@@ -205,48 +225,47 @@ renderSections(filtered);
 
 /* ================= SLIDER ================= */
 
+function startSlider(){
+
 const slides = products.map(p=>p.img);
+
+if(slides.length===0) return;
+
 let i=0;
+
 document.getElementById("sliderImg").src = slides[0];
 
 setInterval(()=>{
+
 i++;
+
 if(i>=slides.length) i=0;
+
 document.getElementById("sliderImg").src = slides[i];
+
 },3000);
+
+}
 
 
 /* ================= TIMER ================= */
 
 let time = 600;
+
 setInterval(()=>{
+
 let m = Math.floor(time/60);
 let s = time%60;
+
 if(s<10) s="0"+s;
+
 document.getElementById("timer").innerText = m+":"+s;
+
 if(time>0) time--;
+
 },1000);
 
-<script>
-const sheetURL = "https://opensheet.elk.sh/1HZ79NaXAvP_V-5qBMFMIfrQmziXZ2ns-xxVraPKP-XM/Sheet1"; // apna link daal
-
-fetch(sheetURL)
-.then(res => res.json())
-.then(data => {
-
-  const products = data.map(p => ({
-    name: p.Name,
-    price: Number(p.Price),
-    category: p.Category,
-    img: p.Image,
-    link: p.Link,
-    trending: p.Trending === "yes"
-  }));
-
-  renderSections(products);
-
-})
-.catch(err=>{
-  console.log("Sheet Error:", err);
-});
 </script>
+
+</body>
+</html>
